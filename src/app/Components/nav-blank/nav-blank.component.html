@@ -1,0 +1,106 @@
+<nav #navBlank class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="">
+      <img src="./assets/images/freshcart-logo.svg" alt="">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+      <!-- left -->
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" routerLinkActive="active-link" aria-current="page" routerLink="/home">Home</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link active" routerLinkActive="active-link" aria-current="page"
+            routerLink="/product">Products</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" routerLinkActive="active-link" aria-current="page"
+            routerLink="/categories">Categories</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" routerLinkActive="active-link" aria-current="page" routerLink="/brands">Brands</a>
+        </li>
+
+
+
+      </ul>
+
+      <!-- light -->
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center ">
+        <li class="nav-item me-4">
+          <div class="dropdown">
+            <button
+              class="dropdown-toggle"
+              type="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <i class="fas fa-user text-success"></i>
+            </button>
+            <ul class="dropdown-menu">
+              
+              <li>
+                <a
+                  class="dropdown-item small"
+                  routerLinkActive="active-link"
+                  routerLink="/UpdatePassword"
+                  >Update password</a
+                >
+              </li>
+              
+            
+            </ul>
+          </div>
+        </li>
+       
+        
+        
+       
+
+
+        
+        <li class="nav-item position-relative me-2">
+          <a class="nav-link " aria-current="page" routerLink="/cart"><i
+              class="fa-solid fa-cart-shopping fa-2xl text-main "></i></a>
+          <span *ngIf="cartNumber!=0" class="badge bg-dark position-absolute top-0 end-0">{{cartNumber}}</span>
+        </li>
+
+                                              <!-- wishList -->
+        <li class="nav-item position-relative me-2">
+          <a class="nav-link " aria-current="page" routerLink="/wishList"><i class="fa-solid fa-heart fa-2xl text-danger"></i></a>
+          <span *ngIf="countNumber!=0"  class="badge bg-dark position-absolute top-0 end-0">{{countNumber}}</span>
+        </li>
+
+        <li class="nav-item d-flex align-items-center gap-3 ali me-2 ">
+          <i class="fab fa-facebook"></i>
+          <i class="fab fa-twitter"></i>
+          <i class="fab fa-instagram"></i>
+          <i class="fab fa-linkedin-in"></i>
+
+        </li>
+        <li><span (click)="signOut()" role="button">signOut</span></li>
+        <!-- <li class="nav-item position-relative me-2">
+          <ul class="dropdown-menu">
+            <li>
+              <a class="dropdown-item text-capitalize" routerLink="/UpdatePassword">update password</a>
+            </li>
+        
+          </ul>
+     
+        </li> -->
+
+
+
+
+
+      </ul>
+
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,103 @@
+<!-- all orders -->
+
+<section class="main-section">
+    <div class="orders mt-4 mb-3 w-75 mx-auto shadow rounded-3 px-3 py-3" *ngFor="let cart of allOrdersList;index as index">
+        <div class="details d-flex justify-content-between">
+            <div class="userDetails d-flex gap-3">
+
+                <div>
+                    <h6 class="text-capitalize fw-bold">name</h6>
+                    <h6 class="text-capitalize fw-bold">phone</h6>
+                    <h6 class="text-capitalize fw-bold">email</h6>
+                </div>
+                <div>
+                    <h6>:</h6>
+                    <h6>:</h6>
+                    <h6>:</h6>
+    
+                </div>
+                <div>
+                    <h6>{{cart.user.name}}</h6>
+                    <h6>{{cart.user.phone}}</h6>
+                    <h6>{{cart.user.email}}</h6>
+                </div>
+    
+    
+    
+            </div>
+
+            <div class="userOrders d-flex gap-3">
+
+                <div>
+                    <h6 class="text-capitalize fw-bold">order number</h6>
+                    <h6 class="text-capitalize fw-bold">created At</h6>
+                    <h6 class="text-capitalize fw-bold">paid at</h6>
+                    <h6 class="text-capitalize fw-bold">payment type</h6>
+                </div>
+                <div>
+                    <h6>:</h6>
+                    <h6>:</h6>
+                    <h6>:</h6>
+                    <h6>:</h6>
+    
+                </div>
+                <div>
+                    <h6>{{cart.id}}</h6>
+                    <h6>{{cart.createdAt|date}}</h6>
+                    <h6>{{cart.paidAt|date}}</h6>
+                    <h6>{{cart.paymentMethodType}}</h6>
+                </div>
+    
+    
+    
+            </div>
+            
+    
+
+        </div>
+
+        <div class="total  w-50 mx-auto bg-main-light rounded-3">
+            <div class="userTotal shadow d-flex gap-3 p-4 my-3">
+
+                <div>
+                    <h6 class="text-capitalize fw-bold">total price</h6>
+                    <h6 class="text-capitalize fw-bold">taxPrice</h6>
+                    <h6 class="text-capitalize fw-bold">ShippingPrice</h6>
+                    <h6 class="text-capitalize fw-bold">total</h6>
+                </div>
+                <div>
+                    <h6>:</h6>
+                    <h6>:</h6>
+                    <h6>:</h6>
+                    <h6>:</h6>
+    
+                </div>
+                <div class="ms-auto">
+                    <h6>{{cart.totalOrderPrice|currency}}</h6>
+                    <h6>{{cart.taxPrice|currency}}</h6>
+                    <h6>{{cart.shippingPrice|currency}}</h6>
+                    <h6>{{cart.totalOrderPrice|currency}}</h6>
+                </div>
+    
+    
+    
+            </div>
+
+
+        </div>
+      
+
+      
+        <button  [routerLink]="['/ALLOrderCart',index]" class="button ms-auto d-block mt-3"></button>
+      
+
+      
+
+
+
+
+    </div>
+
+
+
+</section>

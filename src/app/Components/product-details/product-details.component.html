@@ -1,0 +1,40 @@
+<!-- product details -->
+<section class="main-section " *ngIf="detailsData">
+    <div class="row align-items-center">
+        <div class="col-md-3">
+            <div class="image rounded-2 p-2 overflow-hidden shadow ">
+
+                <owl-carousel-o [options]="customOptions">
+
+                    <ng-container *ngFor="let slide of detailsData?.images">
+                        <ng-template carouselSlide>
+                            <div class="">
+
+                                <img [src]="slide" height="250" class=" rounded-2 w-100" [alt]="detailsData.title">
+
+                            </div>
+
+                        </ng-template>
+                    </ng-container>
+
+                </owl-carousel-o>
+
+            </div>
+        </div>
+
+        <div class="col-md-9">
+            <div class="content ">
+                <h1 class="fw-bold fst-italic">{{detailsData.title.split(" ").slice(0,3).join(" ")}}</h1>
+                <p class=" lead">{{detailsData.description}}</p>
+                <p class="text-muted text-capitalize"><strong>created at :</strong> {{detailsData.createdAt|date}}</p>
+                <div class="rataPrice d-flex text-main justify-content-between align-items-center">
+                    <h6>price :{{detailsData.price|currency}}</h6>
+                    <h6> {{detailsData.ratingsAverage}} <i class="fa-regular fa-star rating-color  "></i></h6>
+                </div>
+                <button [disabled]="clickFlag" (click)="addProduct(detailsData._id)"
+                    class=" w-100 d-block mt-3 main-btn text-capitalize">+add Product cart</button>
+            </div>
+        </div>
+    </div>
+
+</section>

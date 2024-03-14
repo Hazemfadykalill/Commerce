@@ -1,0 +1,38 @@
+<section class="payment">
+    <div class="forms w-75 mx-auto shadow my-5 rounded-2 p-4">
+
+        <form [formGroup]="paymentForm" (ngSubmit)="handelFormPayment()">
+            <!-- details -->
+
+
+            
+            <div class="details">
+                <label for="details" class="text-capitalize mb-2">Details :</label>
+                <input formControlName="details" #details type="text" placeholder="Enter Your Details.." id="details" class="form-control mb-2">
+
+            </div>
+
+
+              <!-- phone -->
+              <div class="phone">
+                <label for="phone" class="text-capitalize mb-2">Phone :</label>
+                <input formControlName="phone" #phone type="tel" placeholder="Enter Your phone.." id="phone" class="form-control mb-2">
+
+            </div>
+ 
+               <!-- city -->
+               <div class="city">
+                <label for="city" class="text-capitalize mb-2">city :</label>
+                <input formControlName="city" #city type="text" placeholder="Enter Your city.." id="city" class="form-control mb-2">
+
+            </div>
+
+            <button class="main-btn d-block mx-auto mt-2 text-capitalize fw-bold">check out <img src="./assets/images/visa-1.svg" alt="visa logo"></button>
+
+
+        </form>
+
+    </div>
+
+
+</section>

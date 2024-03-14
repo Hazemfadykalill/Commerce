@@ -1,0 +1,42 @@
+<!-- all brands -->
+<section class="main-section my-4" *ngIf="allBrandList">
+    <div class="row g-4 justify-content-center">
+        <div *ngFor="let brand of allBrandList " class="col-md-3 col-sm-6 col-lg-2">
+            <div class="image p-3 shadow rounded-2 ">
+                <img  class="w-100" [src]="brand.image" [alt]="brand.name">
+                <div class="content small ">
+                    <div class="download d-flex justify-content-between align-items-center">
+                        <h6 class="fw-bold">{{brand.name}}</h6>
+                        
+                        <span role="button"><a [href]="brand.image" download><i class="fa-solid text-main fs-4 fa-download fa-bounce"></i></a></span>
+
+                    </div>
+                    <p class="m-0 p-0">{{brand.createdAt|date}}</p>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section> 
+
+
+
+<!-- <div class="paginationPages d-flex justify-content-center mt-4">
+
+    <pagination-controls  id="foo"
+                      (pageChange)="pageChanged($event)"
+                      (pageBoundsCorrection)="pageChanged($event)"
+                      [maxSize]="9"
+                      [directionLinks]="true"
+                      [autoHide]="true"
+                      [responsive]="true"
+                      previousLabel="Previous"
+                      nextLabel="Next"
+                      screenReaderPaginationLabel="Pagination"
+                      screenReaderPageLabel="page"
+                      screenReaderCurrentLabel="You're on page">
+</pagination-controls>
+
+</div> -->

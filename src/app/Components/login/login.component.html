@@ -1,0 +1,48 @@
+<section class="formRegister w-75 mx-auto my-5 py-2 px-3 bg-main-light rounded-2 shadow">
+    <h1 class="fw-bold text-capitalize text-center">Login now</h1>
+    <form [formGroup]="loginForm" (ngSubmit)="handleFormLogin()">
+       
+        <!-- Email -->
+        <div class="email form-items">
+            <label for="email">Email :</label>
+            <input #email formControlName="email" type="email" class="form-control" id="email">
+
+            <!-- Email Error -->
+            <div *ngIf="loginForm.get('email')?.errors && (loginForm.get('email')?.touched ||email.value.length>0) "
+                class="alert alert-danger w-50 mx-auto mt-2 rounded-3 text-center">
+                <p class="text-capitalize" *ngIf="loginForm.get('email')?.getError('required')">Email is required</p>
+                <p class="text-capitalize" *ngIf="loginForm.get('email')?.getError('email')">email is
+                    example@gmail/yahoo.com </p>
+
+
+            </div>
+        </div>
+
+
+        <!-- password -->  
+        <div class="password form-items">
+            <label for="password">Password :</label>
+            <input #password formControlName="password" type="password" class="form-control" id="password">
+            <!-- password error -->
+            <div *ngIf="loginForm.get('password')?.errors &&(loginForm.get('password')?.touched ||password.value.length>0) "
+            class="alert alert-danger w-50 mx-auto mt-2 rounded-3 text-center">
+            <p class="text-capitalize" *ngIf="loginForm.get('password')?.getError('required')">password is required</p>
+            <p class="text-capitalize" *ngIf="loginForm.get('password')?.getError('pattern')">password must be at least 6 char  and start at least one capital char and contain any numbers </p>
+
+
+        </div>
+        </div>
+
+        <div class="buttons d-flex justify-content-center ">
+            <button [disabled]="loginForm.invalid" class="main-btn px-3 py-2 d-block me-5  my-3"> <i *ngIf="isLoading" class="fa-solid fa-circle-notch fa-spin text-white me-2"></i> Login</button>
+        <button class="main-btn px-3 py-2 d-block  my-3 text-capitalize" routerLink="/forgetPassword">forget password</button>
+
+        </div>
+        
+    </form>
+
+
+
+
+
+</section>

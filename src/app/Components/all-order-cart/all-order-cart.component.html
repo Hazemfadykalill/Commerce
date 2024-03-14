@@ -1,0 +1,18 @@
+<section class="my-5">
+    <div class="row g-4 justify-content-center">
+        <div class="col-md-3 col-sm-6 col-lg-2" *ngFor="let product of allCartItemList">
+            <div class="image shadow rounded-2 bg-main-light overflow-hidden"> 
+                <img [src]="product.product.imageCover" class="w-100 " height="270" [alt]="product.product.title">
+                <div class="content px-2 my-4 ">
+                    <h6 class="fw-bold text-capitalize ">{{product.product.title.split(" ").slice(0,2).join(" ")}}</h6>
+                    <div class="price d-flex justify-content-between align-items-center small">
+                        <p class="m-0 p-0 text-main">price :{{product.price|currency}}</p>
+                        <i class="fa-solid fa-star me-2 rating-color">{{product.product.ratingsAverage}}</i>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

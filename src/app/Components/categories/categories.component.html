@@ -1,0 +1,32 @@
+<!-- all brands -->
+<section class="main-section my-5" *ngIf="AllCategoriesList">
+    <div class="row g-4 justify-content-center">
+        <div  class="col-md-3 col-sm-6 col-lg-2" *ngFor="let brand of AllCategoriesList">
+            <div class="image overflow-hidden shadow rounded-2 ">
+                <img height="250" class="w-100" [src]="brand.image" [alt]="brand.name">
+                <div class="content small   px-2 my-3">
+                    <div class="download ">
+                        <h6 class="fw-bold">{{brand.name}}</h6>
+                        
+                        
+
+                    </div>
+                    <p class="m-0 p-0">{{brand.createdAt|date}}</p>
+                    <div class="d-flex justify-content-between align-items-center my-4">
+                        <span  class="fst-italic text-main border-bottom text-capitalize " role="button">Read more..</span>
+                        <span class="" role="button"><a [href]="brand.image" download><i class="fa-solid text-main fs-4 fa-download fa-bounce"></i></a></span>
+
+                    </div>
+                    
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</section>
+
+

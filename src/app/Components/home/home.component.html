@@ -1,0 +1,107 @@
+<!-- slider static -->
+<section class="sliderStatic  rounded-2">
+    <div class="row g-0">
+        <div class="col-md-9">
+            <div class="left">
+                <owl-carousel-o [options]="staticOption">
+                    <ng-template carouselSlide><img height="400" src="./assets/images/main-slider-1.jpeg"
+                            alt=""></ng-template>
+                    <ng-template carouselSlide><img height="400" src="./assets/images/main-slider-2.jpeg"
+                            alt=""></ng-template>
+                    <ng-template carouselSlide><img height="400" src="./assets/images/main-slider-3.jpeg"
+                            alt=""></ng-template>
+                    <ng-template carouselSlide><img height="400" src="./assets/images/grocery-banner.png"
+                            alt=""></ng-template>
+
+                </owl-carousel-o>
+
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="right">
+                <img height="200" class="w-100" src="../../../assets/images/blog-img-1.jpeg" alt="">
+                <img height="200" class="w-100" src="../../../assets/images/blog-img-2.jpeg" alt="">
+
+
+            </div>
+        </div>
+    </div>
+
+
+</section>
+
+
+
+
+<!-- Slider Dynamic -->
+<!-- All Categories -->
+<section class="sliderDynamic mb-2  ">
+
+    <owl-carousel-o [options]="customOptions">
+
+        <ng-container *ngFor="let slide of responseAllCategory">
+            <ng-template carouselSlide>
+                <div class="text-center mt-2 mx-2 rounded-2 overflow-hidden  slider  rounded-3">
+                    <div class="d overflow-hidden">
+                        <img [src]="slide.image" height="200" class="w-100" [alt]="slide.name">
+                    </div>
+
+                    <h6 class="mt-2 fw-bold">{{slide.name}}</h6>
+                </div>
+
+            </ng-template>
+        </ng-container>
+
+    </owl-carousel-o>
+</section>
+
+<!-- <i class="fa-solid fa-heart"></i> -->
+
+
+<!-- All Products  -->
+<section class="allProducts my-4  " *ngIf="responseAllProduct?.length">
+    <div class="inputSearch w-50 mx-auto my-3 py-3">
+        <input [(ngModel)]="searchText" type="search" class="form-control" placeholder="search..">
+    </div>
+    <div class="row g-2">
+        <div class=" col-md-2 " *ngFor="let product of responseAllProduct!|search:searchText |slice:0:18">
+            <div class="product ">
+                <!-- empty first -->
+                <i *ngIf="!responseAllWishListData?.includes(product._id)" [id]="product._id"
+                    (click)="addToWishList(product._id)" class="fa-regular fa-heart  heart "></i>
+                <!-- full  second-->
+                <i *ngIf="responseAllWishListData?.includes(product._id)" [id]="product._id"
+                    (click)="addToWishList(product._id)" class="fa-solid fa-heart  heart "></i>
+                <div role="button" class="image" [routerLink]="['/details',product._id]">
+                    <img [src]="product.imageCover" class="w-100" [alt]="product.title">
+                    <hr>
+
+
+                </div>
+
+                <div class="content px-1 ">
+                    <div class="cart d-flex justify-content-between mb-2">
+                        <h6 class="fw-bold">{{product.category.name}}</h6>
+                        <button (click)="addProduct(product._id)" [disabled]="clickFlag"
+                            class=" btnCart p-0 m-0 border-0 bg-white"><i
+                                class="fa-solid fa-cart-plus fs-3 fw-bold text-main "></i></button>
+
+
+                    </div>
+
+                    <div class="  d-flex justify-content-between small ">
+                        <p class=" m-0 p-0 text-main ">price:{{product.price}}</p>
+                        <p class="m-0 p-0"> <i [class.rating-color]="product.ratingsAverage>num"
+                                class="fa-solid fa-star" *ngFor="let num of [1,2,3,4,5]"></i> {{product.ratingsAverage}}
+                        </p>
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</section>

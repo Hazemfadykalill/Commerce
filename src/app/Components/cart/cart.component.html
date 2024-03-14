@@ -1,0 +1,72 @@
+<section class="main-section  my-3 p-3 w-75 mx-auto " *ngIf="allDataFromCart ;else template">
+    <header class="d-flex justify-content-between mb-2 align-items-center">
+        <h1 class="fw-bold">Cart shop</h1>
+        
+        <p class="m-0 p-0 text-uppercase">total: {{allDataFromCart.data.totalCartPrice|currency:"EYG "}}</p>
+        <button [routerLink]="['/payment',allDataFromCart.data._id]"  class="text-capitalize main-btn d-block ">payment <img src="./assets/images/visa-1.svg" alt="visa logo"></button>
+  
+
+        <button (click)="allRemove()" class="text-capitalize allRemove d-block mt-4 px-4 py-2 ">ALL remove</button>
+
+    </header>
+    <div class="row align-items-center  mt-2" *ngFor="let cart of allDataFromCart.data.products">
+        <div class="col-md-3">
+            <div class="image text-center rounded-2 overflow-hidden">
+                <img [src]="cart.product.imageCover" height="200" class="w-100 rounded-2" [alt]="cart.product.title">
+                <h6 class="mt-1 fw-bold">{{cart.product.category.slug}}</h6>
+
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="content d-flex justify-content-between align-items-center ">
+                <div class="des ">
+                    <h1 class="fw-bold">{{cart.product.title.split(" ").slice(0,2).join(" ") }} </h1>
+
+
+                    <div class=" d-flex gap-2 flex-column ">
+                        <span class="  text-uppercase text-main"><strong class="text-black">price :</strong>  {{cart.price*cart.count|currency:"EYG "}}</span>
+                        <span class=" text-uppercase text-main"> <strong class="text-black">onePrice :</strong> {{cart.price|currency:"EYG "}}</span>
+
+                    </div>
+                  
+                    <span class="mt-2"><strong class="me-1">createdAt
+                            :</strong>{{allDataFromCart.data.createdAt|date}}</span>
+                    <button (click)="delProductFromCart(cart.product._id)" class="btnRemove d-block mt-4 px-4 py-2 text-capitalize">remove<i  
+                            class="fa-solid ms-2 fa-trash-can"></i></button>
+
+                </div>
+                <div class="price ">
+                    <div class="btns d-flex gap-2 align-items-center">
+                        <button (click)="addCount(cart.count+1,cart.product._id)" class="btn-cart "><i class="fa-solid fa-plus"></i></button>
+                        <span>{{cart.count}}</span>
+                        <button (click)="minusCount(cart.count-1,cart.product._id)" class="btn-cart"><i class="fa-solid fa-minus"></i></button>
+
+                    </div>
+
+
+
+                </div>
+
+
+            </div>
+        </div>
+        <div class="line w-75 mx-auto">
+            <hr>
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+</section>
+
+<ng-template #template>
+    <div class=" d-flex align-items-center justify-content-center w-100 h-100">
+        <h1 class="text-capitalize fw-bold">Your Cart Is Empty....</h1>
+    </div>
+
+</ng-template>
